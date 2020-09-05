@@ -1,0 +1,47 @@
+<section id="settings">
+  <div class="container p-5">
+    <h4 class="display-4">My Account Settings</h4>
+    <hr>
+    <app-message></app-message>
+    <div *ngIf="!currentSettings" class="m-auto">
+      <h1 class="text-center dispaly-3 mt-5">
+        <i class="fa fa-spinner fa-spin"></i>
+      </h1>
+    </div>
+    <div *ngIf="currentSettings" class="card bg-light">
+      <div class="card-body">
+        <form>
+          <div class="form-group">
+            <label for="name" class="form-control-label">Name</label>
+            <input type="text" class="form-control" id="name" [(ngModel)]="currentSettings.name"
+              [ngModelOptions]="{standalone: true}" placeholder="Name">
+          </div>
+          <div class="form-group">
+            <label for="email" class="form-control-label">Email</label>
+            <input type="email" class="form-control" id="email" [(ngModel)]="currentSettings.email"
+              [ngModelOptions]="{standalone: true}" placeholder="Email">
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="checkbox" class="form-check-input" name="isSeller" [(ngModel)]="currentSettings.isSeller"
+                [ngModelOptions]="{standalone: true}">
+              Is Seller
+            </label>
+          </div>
+          <div class="form-group">
+            <label for="newPassword" class="form-control-label">New Password</label>
+            <input type="password" class="form-control" id="newPassword" [(ngModel)]="currentSettings.newPassword"
+              [ngModelOptions]="{standalone: true}" placeholder="New Password">
+          </div>
+          <div class="form-group">
+            <label for="confirmPassword" class="form-control-label">Confirm Password</label>
+            <input type="password" class="form-control" id="confirmPassword"
+              [(ngModel)]="currentSettings.confirmPassword" [ngModelOptions]="{standalone: true}"
+              placeholder="Confirm Password">
+          </div>
+          <button type="button" class="btn btn-danger" (click)="update()" [disabled]="btnDisabled">Update</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
